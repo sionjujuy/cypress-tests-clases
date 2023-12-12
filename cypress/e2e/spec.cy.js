@@ -1,4 +1,6 @@
 describe('Pruebas heroku app', () => {
+
+  //Prueba Positiva: Usuario y contraseña
   it('login con usuario y contraseñas validos', () => {
     cy.visit('https://the-internet.herokuapp.com/')
     cy.get(':nth-child(21) > a').click()
