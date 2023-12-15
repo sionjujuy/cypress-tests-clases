@@ -1,8 +1,11 @@
-describe('Pruebas heroku app', () => {
-
+describe("pruebas de login", () => {
+    beforeEach(() => {
+      cy.visit("https://the-internet.herokuapp.com/");
+      cy.get(":nth-child(21) > a").click();
+    });
   //Prueba Positiva: Usuario y contraseña
   it('login con usuario y contraseñas validos', () => {
-    cy.visit('https://the-internet.herokuapp.com/')
+    //cy.visit('https://the-internet.herokuapp.com/')
     cy.get(':nth-child(21) > a').click()
     cy.get('#username').type('tomsmith')
     cy.get('#password').type('SuperSecretPassword!')
@@ -13,7 +16,7 @@ describe('Pruebas heroku app', () => {
 
 //Prueba Negativa: Enviar un Formulario Vacío
   it('Debería mostrar mensajes de error', () => {
-    cy.visit('https://the-internet.herokuapp.com/checkboxes');
+    //cy.visit('https://the-internet.herokuapp.com/checkboxes');
     cy.get('form').submit();
     cy.contains('Checkbox 1 is required.').should('be.visible');
     cy.contains('Checkbox 2 is required.').should('be.visible');
@@ -21,7 +24,7 @@ describe('Pruebas heroku app', () => {
 
 //Prueba Negativa: Intentar Eliminar un Elemento Inexistente en la Lista de Elementos
   it('Debería mostrar un mensaje de error', () => {
-    cy.visit('https://the-internet.herokuapp.com/add_remove_elements/');
+    //cy.visit('https://the-internet.herokuapp.com/add_remove_elements/');
     
     // Intentamos eliminar un elemento que no existe
     cy.get('.added-manually').should('not.exist');
@@ -33,11 +36,11 @@ describe('Pruebas heroku app', () => {
 
  // Prueba Negativa: Intentar Subir un Archivo que No Sea una Imagen 
   it('Debería mostrar un mensaje de error', () => {
-    cy.visit('https://the-internet.herokuapp.com/upload');
+    //cy.visit('https://the-internet.herokuapp.com/upload');
 
     // Intentamos subir un archivo que no es una imagen
     const filePath = 'archivo_no_imagen.txt'; // Debes tener un archivo no imagen en tu proyecto
-    cy.get('input[type="file"]').attachFile(filePath);
+    //cy.get('input[type="file"]').attachFile(filePath);
 
     // Verificamos que se muestre un mensaje de error
     cy.contains('File Uploaded!').should('not.exist');
